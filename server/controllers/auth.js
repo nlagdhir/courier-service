@@ -95,6 +95,15 @@ const login = (req, res) => {
   }
 };
 
+// There is very simple solution for this. Follow the following steps to send emails from your gmail using node (nodemailer)
+
+// Step1: Open this link https://myaccount.google.com/security
+// Step2: Enable 2 factor authentication
+// Click on App passwords just below the 2 factor authentication
+// From Select App options select Other and write your app name it could be any name like mycustomapp
+// It will generate you the password copy the password from the popup and use the following code.
+// Use that copied password in the Auth password section my password was this ediqcvvkjmuiurjx
+
 const logout = (req, res) => {
   res
     .clearCookie("access_token")
