@@ -18,7 +18,6 @@ function DashboardLogin() {
   });
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  let errorObj = {};
 
   const { login, setCurrentUser } = useContext(AuthContext);
 
