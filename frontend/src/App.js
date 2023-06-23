@@ -47,65 +47,65 @@ function App() {
           <Route
             path="/dashboard"
             element={
-              // <Protected isLoggedIn={checkAuth()}>
+              <Protected isLoggedIn={checkAuth()}>
               <Dashboard />
-              // </Protected>
+               </Protected>
             }
           >
             <Route
               index
               element={
-                // <Protected isLoggedIn={checkAuth()}>
+                <Protected isLoggedIn={checkAuth()}>
                 <Admin />
-                // </Protected>
+               </Protected>
               }
             ></Route>
             <Route
               path="report"
               element={
-                // <Protected isLoggedIn={checkAuth()}>
+                 <Protected isLoggedIn={checkAuth()}>
                 <Report />
-                // </Protected>
+                 </Protected>
               }
             ></Route>
             <Route
               path="account"
               element={
-                // <Protected isLoggedIn={checkAuth()}>
+                <Protected isLoggedIn={checkAuth()}>
                 <Account />
-                // </Protected>
+                 </Protected>
               }
             ></Route>
             <Route
               path="booking"
               element={
-                // <Protected isLoggedIn={checkAuth()}>
+              <Protected isLoggedIn={checkAuth()}>
                 <Booking />
-                // </Protected>
+                 </Protected>
               }
             ></Route>
             <Route
               path="form"
               element={
-                // <Protected isLoggedIn={checkAuth()}>
+               <Protected isLoggedIn={checkAuth()}>
                 <AddForm />
-                // </Protected>
+                </Protected>
               }
             ></Route>
             <Route
               path="menu"
               element={
-                // <Protected isLoggedIn={checkAuth()}>
+                <Protected isLoggedIn={checkAuth()}>
                 <Menu />
-                // </Protected>
+                </Protected>
               }
             ></Route>
             <Route
               path="profile"
               element={
-                // <Protected isLoggedIn={checkAuth()}>
+                <Protected isLoggedIn={checkAuth()}>
                 <Profile />
-                // </Protected>
+                </Protected>
               }
             ></Route>
           </Route>

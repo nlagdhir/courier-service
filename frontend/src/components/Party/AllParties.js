@@ -5,12 +5,12 @@ import { RiDeleteBinLine } from "react-icons/ri";
 
 function AllParties({ handlePartyEdit, data, partyData }) {
   return (
-    <div className="w-3/5">
+    <div className="md:w-3/5">
       <div className="shadow-lg bg-white rounded border-t-4 border-blue-400 overflow-hidden ml-2">
         <h2 className="w-full py-3 border-b-2 shadow-md mb-6 font-bold text-xl px-4">
           All Parties
         </h2>
-        <div className="flex justify-between pr-4">
+        <div className="md:flex md:justify-between pr-4">
           <div className="flex pl-2 mb-3 items-center">
             <p>Show</p>
             <select className="border-2 outline-none border-black px-2 mx-4 py-1 w-16 max-w-xs">
@@ -24,7 +24,7 @@ function AllParties({ handlePartyEdit, data, partyData }) {
             </select>
             <p>Entries</p>
           </div>
-          <div>
+          <div className="pl-2 mb-2 md:pl-0 md:mb-0">
             <label htmlFor="">Search:</label>
             <input
               type=""

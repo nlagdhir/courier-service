@@ -51,14 +51,14 @@ const AddForm = () => {
     setEditMode(false);
   };
   return (
-    <div className="bg-[#F2EDF3] w-full px-14">
+    <div className="bg-[#F2EDF3] w-full px-4 md:px-14">
       <p className="pt-14">
         <span className="bg-gradient-to-r rounded from-pink-200 via-purple-500 to-[#B66DFF] p-3">
           <FaWpforms className=" mb-1 inline text-white" size={20} />
         </span>
         <span className="px-4 font-bold">Add Party</span>
       </p>
-      <div className="flex justify-center pt-8 pb-14">
+      <div className="md:flex md:justify-center pt-8 pb-14">
         <AddParties
           data={data}
           editMode={editMode}
