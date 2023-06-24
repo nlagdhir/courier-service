@@ -1,23 +1,38 @@
-import React, { useEffect, useState } from "react";
-import { MdCancel, MdOutlineCheck } from "react-icons/md";
+import React from "react";
+import { FaWpforms } from "react-icons/fa";
+function Form() {
+  const [inputs, setInputs] = useState({
+    name: "",
+    address_1: "",
+    address_2: "",
+    city: "",
+    state: "",
+    contactPerson: "",
+    phone: "",
+    mobile: "",
+    email: "",
+    website: "",
+    gstNo: "",
+    fuelCharge: "",
+  });
 
-function AddParties({
-  editMode,
-  mode,
-  formData,
-  setEditMode,
-  partyData,
-  setPartyData,
-  inputs,
-  setInputs,
-  errors,
-  setErrors,
-}) {
-  const filterItem = partyData.filter((f) => f._id !== formData._id);
+  const [errors, setErrors] = useState({
+    name: "",
+    address_1: "",
+    address_2: "",
+    city: "",
+    state: "",
+    contactPerson: "",
+    phone: "",
+    mobile: "",
+    email: "",
+    website: "",
+    gstNo: "",
+    fuelCharge: "",
+  });
   const isValidEmail = (email) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
-
   const [isCash, setIsCash] = useState(true);
   const handleChange = (e) => {
     setErrors((prev) => ({
@@ -28,158 +43,14 @@ function AddParties({
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    let check = false;
-
-    if (inputs.name.trim() === "") {
-      check = true;
-      setErrors((prev) => ({
-        ...prev,
-        ["name"]: "Party name should not be empty",
-      }));
-    }
-
-    if (inputs.address_1?.trim() === "") {
-      check = true;
-      setErrors((prev) => ({
-        ...prev,
-        ["address_1"]: "Address 1 should not be empty",
-      }));
-    }
-
-    if (inputs.address_2?.trim() === "") {
-      check = true;
-      setErrors((prev) => ({
-        ...prev,
-        ["address_2"]: "Address 2 should not be empty",
-      }));
-    }
-
-    if (inputs.city?.trim() === "") {
-      check = true;
-      setErrors((prev) => ({
-        ...prev,
-        ["city"]: "City should not be empty",
-      }));
-    }
-
-    if (inputs.state?.trim() === "") {
-      check = true;
-      setErrors((prev) => ({
-        ...prev,
-        ["state"]: "State should not be empty",
-      }));
-    }
-
-    if (inputs.contactPerson?.trim() === "") {
-      check = true;
-      setErrors((prev) => ({
-        ...prev,
-        ["contactPerson"]: "Contact Person should not be empty",
-      }));
-    }
-
-    if (inputs.mobile?.trim() === "") {
-      check = true;
-      setErrors((prev) => ({
-        ...prev,
-        ["mobile"]: "Mobile should not be empty",
-      }));
-    }
-    if (inputs.phone?.trim() === "") {
-      check = true;
-      setErrors((prev) => ({
-        ...prev,
-        ["phone"]: "Phone should not be empty",
-      }));
-    } else if (!/^\d{11}$/.test(inputs.phone)) {
-      setErrors((prev) => ({
-        ...prev,
-        ["phone"]: "Please enter a valid phone number",
-      }));
-    }
-
-    if (inputs.email?.trim() === "") {
-      check = true;
-      setErrors((prev) => ({
-        ...prev,
-        ["email"]: "Email should not be empty",
-      }));
-    }
-
-    if (!isValidEmail(inputs.email)) {
-      check = true;
-      setErrors((prev) => ({
-        ...prev,
-        ["email"]: "Invalid email address",
-      }));
-    }
-
-    if (inputs.gstNo?.trim() === "") {
-      check = true;
-      setErrors((prev) => ({
-        ...prev,
-        ["gstNo"]: "GST No should not be empty",
-      }));
-    }
-
-    if (inputs.fuelCharge?.trim() === "") {
-      check = true;
-      setErrors((prev) => ({
-        ...prev,
-        ["fuelCharge"]: "Fuel Charge should not be empty",
-      }));
-    }
-
-    if (check) return;
-    const partyFormData = {
-      _id: Date.now(),
-      name: inputs.name,
-      address1: inputs.address_1,
-      address2: inputs.address_2,
-      city: inputs.city,
-      state: inputs.state,
-      contactPerson: inputs.contactPerson,
-      phone: inputs.phone,
-      mobile: inputs.mobile,
-      email: inputs.email,
-      website: inputs.website,
-      gstNo: inputs.gstNo,
-      fuelCharge: inputs.fuelCharge,
-      isCash: isCash,
-    };
-
-    const newFormArray = [...filterItem, partyFormData];
-    localStorage.setItem("party", JSON.stringify(newFormArray));
-    if (newFormArray) {
-      setPartyData(newFormArray);
-      setInputs({
-        name: "",
-        address_1: "",
-        address_2: "",
-        city: "",
-        state: "",
-        contactPerson: "",
-        phone: "",
-        mobile: "",
-        email: "",
-        website: "",
-        gstNo: "",
-        fuelCharge: "",
-      });
-    }
+  const handlePartyEdit = (id) => {
+    setEditMode(true);
+    const selected = partyData?.find((d) => d._id === id);
+    setFormData(selected);
+  };
+  const mode = () => {
     setEditMode(false);
   };
-  useEffect(() => {
-    const data = localStorage.getItem("party");
-    const data2 = JSON.parse(data);
-    if (data) {
-      setPartyData(data2);
-    }
-  }, [setPartyData]);
-
   return (
     <form
       onSubmit={handleSubmit}
@@ -217,11 +88,9 @@ function AddParties({
               id="name"
               placeholder="PARTY NAME"
               className="border px-4 py-2 outline-none text-sm md:text-xl  w-full"
-              defaultValue={editMode ? formData.name : inputs.name}
+              value={inputs.name}
               name="name"
               onChange={handleChange}
-              // defaultValue={editMode ? formData.name : name}
-              // onChange={(e) => setName(e.target.value)}
             />
             <p className="text-red-500">{errors.name}</p>
           </div>
@@ -241,8 +110,7 @@ function AddParties({
                 placeholder="ADDRESS LINE 1"
                 className="border px-4 py-2 outline-none text-sm md:text-xl  w-full"
                 defaultValue={editMode ? formData?.address1 : inputs.address_1}
-                // onChange={(e) => setAddress(e.target.value)}
-                // value={inputs.address_1}
+                value={inputs.address_1}
                 name="address_1"
                 onChange={handleChange}
               />
@@ -254,9 +122,7 @@ function AddParties({
                 id="address_2"
                 placeholder="ADDRESS LINE 2 "
                 className="border px-4 py-2 outline-none text-sm md:text-xl  w-full"
-                defaultValue={editMode ? formData?.address2 : inputs?.address_2}
-                // onChange={(e) => setAddress2(e.target.value)}
-                // value={inputs.address_2}
+                value={inputs.address_2}
                 name="address_2"
                 onChange={handleChange}
               />
@@ -277,11 +143,9 @@ function AddParties({
               id="city"
               placeholder="CITY"
               className="border px-4 py-2 outline-none text-sm md:text-xl  w-full"
-              // value={inputs.city}
+              value={inputs.city}
               name="city"
               onChange={handleChange}
-              defaultValue={editMode ? formData?.city : inputs.city}
-              // onChange={(e) => setCIty(e.target.value)}
             />
             <p className="text-red-500">{errors.city}</p>
           </div>
@@ -299,11 +163,9 @@ function AddParties({
               id="State"
               placeholder="STATE"
               className="border px-4 py-2 outline-none text-sm md:text-xl  w-full"
-              // value={inputs.state}
+              value={inputs.state}
               name="state"
               onChange={handleChange}
-              defaultValue={editMode ? formData?.state : inputs.state}
-              // onChange={(e) => setState(e.target.value)}
             />
             <p className="text-red-500">{errors.state}</p>
           </div>
@@ -321,11 +183,7 @@ function AddParties({
               id="contactPerson"
               placeholder="CONTACT PERSON NAME"
               className="border px-4 py-2 outline-none text-sm md:text-xl  w-full"
-              defaultValue={
-                editMode ? formData?.contactPerson : inputs.contactPerson
-              }
-              // onChange={(e) => setContactPerson(e.target.value)}
-              // value={inputs.contactPerson}
+              value={inputs.contactPerson}
               name="contactPerson"
               onChange={handleChange}
             />
@@ -345,11 +203,9 @@ function AddParties({
               id="phone"
               placeholder="PHONE"
               className="border px-4 py-2 outline-none text-sm md:text-xl  w-full"
-              // value={inputs.phone}
+              value={inputs.phone}
               name="phone"
               onChange={handleChange}
-              defaultValue={editMode ? formData?.phone : inputs.phone}
-              // onChange={(e) => setPhone(e.target.value)}
             />
             <p className="text-red-500">{errors.phone}</p>
           </div>
@@ -367,8 +223,7 @@ function AddParties({
               id="mobile"
               placeholder="MOBILE NO"
               className="border px-4 py-2 outline-none text-sm md:text-xl  w-full"
-              // value={inputs.mobile}
-              defaultValue={editMode ? formData?.phone : inputs.mobile}
+              value={inputs.mobile}
               name="mobile"
               onChange={handleChange}
             />
@@ -388,9 +243,7 @@ function AddParties({
               id="eamil"
               placeholder="EMAIL ADDRESS"
               className="border px-4 py-2 outline-none text-sm md:text-xl  w-full"
-              defaultValue={editMode ? formData?.email : inputs.email}
-              // onChange={(e) => setEmail(e.target.value)}
-              // value={inputs.email}
+              value={inputs.email}
               name="email"
               onChange={handleChange}
             />
@@ -410,9 +263,7 @@ function AddParties({
               id="website"
               placeholder="WEBSITE"
               className="border px-4 py-2 outline-none text-sm md:text-xl  w-full"
-              defaultValue={editMode ? formData?.website : inputs.website}
-              // onChange={(e) => setWebsite(e.target.value)}
-              // value={inputs.website}
+              value={inputs.website}
               name="website"
               onChange={handleChange}
             />
@@ -432,9 +283,7 @@ function AddParties({
               id="gstNo"
               placeholder="GST NO"
               className="border px-4 py-2 outline-none text-sm md:text-xl  w-full"
-              defaultValue={editMode ? formData?.gstNo : inputs.gstNo}
-              // onChange={(e) => setGstNo(e.target.value)}
-              // value={inputs.gstNo}
+              value={inputs.gstNo}
               name="gstNo"
               onChange={handleChange}
             />
@@ -454,10 +303,7 @@ function AddParties({
               id="name"
               placeholder="FUEL CHARGE"
               className="border px-4 py-2 outline-none text-sm md:text-xl  w-full"
-              defaultValue={editMode ? formData?.fuelCharge : inputs.fuelCharge}
-              // onChange={(e) => setFuelCharge(e.target.value)}
-
-              // value={inputs.fuelCharge}
+              value={inputs.fuelCharge}
               name="fuelCharge"
               onChange={handleChange}
             />
@@ -491,4 +337,4 @@ function AddParties({
   );
 }
 
-export default AddParties;
+export default Form;

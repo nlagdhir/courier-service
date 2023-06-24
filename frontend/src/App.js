@@ -1,7 +1,5 @@
 import "./App.css";
 import { Route, Routes, Navigate } from "react-router-dom";
-import Report from "./components/Report";
-import Account from "./components/Account";
 import Booking from "./components/Booking/Booking";
 import Menu from "./components/Menu";
 import Profile from "./components/Profile";
@@ -17,8 +15,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const Protected = ({ isLoggedIn, children }) => {
-    console.log(isLoggedIn);
-
     if (!isLoggedIn) {
       return <Navigate to="/login" />;
     }
@@ -32,7 +28,6 @@ function App() {
       return false;
     }
   };
-
   return (
     <>
       <div className="">
@@ -45,66 +40,51 @@ function App() {
           <Route path="/login" element={<DashboardLogin />}></Route>
           <Route path="/forgot-password" element={<SendLink />}></Route>
           <Route
-            path="/dashboard"
+            path="/"
             element={
               <Protected isLoggedIn={checkAuth()}>
-              <Dashboard />
-               </Protected>
+                <Dashboard />
+              </Protected>
             }
           >
             <Route
               index
               element={
                 <Protected isLoggedIn={checkAuth()}>
-                <Admin />
-               </Protected>
+                  <Admin />
+                </Protected>
               }
             ></Route>
+
             <Route
-              path="report"
-              element={
-                 <Protected isLoggedIn={checkAuth()}>
-                <Report />
-                 </Protected>
-              }
-            ></Route>
-            <Route
-              path="account"
+              path="dashboard/booking"
               element={
                 <Protected isLoggedIn={checkAuth()}>
-                <Account />
-                 </Protected>
-              }
-            ></Route>
-            <Route
-              path="booking"
-              element={
-              <Protected isLoggedIn={checkAuth()}>
-                <Booking />
-                 </Protected>
-              }
-            ></Route>
-            <Route
-              path="form"
-              element={
-               <Protected isLoggedIn={checkAuth()}>
-                <AddForm />
+                  <Booking />
                 </Protected>
               }
             ></Route>
             <Route
-              path="menu"
+              path="dashboard/form"
               element={
                 <Protected isLoggedIn={checkAuth()}>
-                <Menu />
+                  <AddForm />
                 </Protected>
               }
             ></Route>
             <Route
-              path="profile"
+              path="dashboard/menu"
               element={
                 <Protected isLoggedIn={checkAuth()}>
-                <Profile />
+                  <Menu />
+                </Protected>
+              }
+            ></Route>
+            <Route
+              path="dashboard/profile"
+              element={
+                <Protected isLoggedIn={checkAuth()}>
+                  <Profile />
                 </Protected>
               }
             ></Route>

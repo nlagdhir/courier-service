@@ -104,3 +104,7 @@ border-radius: 5px;
 			background-color: #667eea !important;
 			/*bg-indigo-500*/
 		}
+
+		.drawer-mobile{
+			grid-column-start: 1!important;
+		}

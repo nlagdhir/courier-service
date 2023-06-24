@@ -37,16 +37,50 @@ const AddForm = () => {
       mobile: "(942) 471-3620",
     },
   ]);
+  const [inputs, setInputs] = useState({
+    name: "",
+    address_1: "",
+    address_2: "",
+    city: "",
+    state: "",
+    contactPerson: "",
+    phone: "",
+    mobile: "",
+    email: "",
+    website: "",
+    gstNo: "",
+    fuelCharge: "",
+  });
+
+  const [errors, setErrors] = useState({
+    name: "",
+    address_1: "",
+    address_2: "",
+    city: "",
+    state: "",
+    contactPerson: "",
+    phone: "",
+    mobile: "",
+    email: "",
+    website: "",
+    gstNo: "",
+    fuelCharge: "",
+  });
   useEffect(() => {
     fetch("parties.json")
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);
+
   const handlePartyEdit = (id) => {
     setEditMode(true);
     const selected = partyData?.find((d) => d._id === id);
-    setFormData(selected);
+    if (selected) {
+      setInputs(selected);
+      setFormData(selected);
+    }
   };
+
   const mode = () => {
     setEditMode(false);
   };
@@ -65,7 +99,12 @@ const AddForm = () => {
           mode={mode}
           partyData={partyData}
           formData={formData}
-          setPartyData={setPartyData} setEditMode={setEditMode}
+          setPartyData={setPartyData}
+          setEditMode={setEditMode}
+          inputs={inputs}
+          setInputs={setInputs}
+          errors={errors}
+          setErrors={setErrors}
         />
         <AllParties
           data={data}

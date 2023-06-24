@@ -25,7 +25,7 @@ function Dashboard() {
             className="menu menu-compact dropdown-content p-2 shadow bg-base-100 rounded w-52"
           >
             <li>
-              <NavLink className="my-2 mr-1" to="/dashboard">
+              <NavLink className="my-2 mr-1" to="/">
                 <ImHome className="mr-2 mb-1 inline" size={20} /> Home
               </NavLink>
             </li>
@@ -36,23 +36,13 @@ function Dashboard() {
               </NavLink>
             </li>
 
-            <li>
-              <NavLink className="py-2" to="/dashboard/account">
-                <BsCurrencyRupee className="mr-2 mb-1 inline" size={20} />{" "}
-                Account
-              </NavLink>
-            </li>
 
             <li>
               <NavLink className="py-2" to="/dashboard/form">
                 <FaWpforms className="mr-2 mb-1 inline" size={20} /> Form
               </NavLink>
             </li>
-            <li>
-              <NavLink className="py-2" to="/dashboard/report">
-                <GoReport className="mr-2 mb-1 inline" size={20} /> Report
-              </NavLink>
-            </li>
+         
             <li>
               <NavLink className="py-2" to="/dashboard/menu">
                 <CiMenuKebab className="mr-2 mb-1 inline" size={20} /> Menu
@@ -75,7 +65,7 @@ function Dashboard() {
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="flex justify-center items-center py-4 bg-[#B66DFF] text-white ">
           <li>
-            <NavLink className="py-2 px-10 mr-1" to="/dashboard">
+            <NavLink className="py-2 px-10 mr-1" to="/">
               <ImHome className="mr-2 mb-1 inline" size={20} /> Home
             </NavLink>
           </li>
@@ -86,22 +76,14 @@ function Dashboard() {
             </NavLink>
           </li>
 
-          <li>
-            <NavLink className="py-2 px-10" to="/dashboard/account">
-              <BsCurrencyRupee className="mr-2 mb-1 inline" size={20} /> Account
-            </NavLink>
-          </li>
+     
 
           <li>
             <NavLink className="py-2 px-10" to="/dashboard/form">
               <FaWpforms className="mr-2 mb-1 inline" size={20} /> Form
             </NavLink>
           </li>
-          <li>
-            <NavLink className="py-2 px-10" to="/dashboard/report">
-              <GoReport className="mr-2 mb-1 inline" size={20} /> Report
-            </NavLink>
-          </li>
+         
           <li>
             <NavLink className="py-2 px-10" to="/dashboard/menu">
               <CiMenuKebab className="mr-2 mb-1 inline" size={20} /> Menu
@@ -120,7 +102,7 @@ function Dashboard() {
         </ul>
       </div>
 
-      <div className="drawer drawer-mobile bg-[#F9FAFB]">
+      <div className="drawer drawer-mobile bg-[#F9FAFB] px-2">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content text-black flex flex-col">
           <Outlet></Outlet>
