@@ -54,7 +54,7 @@ function DashboardLogin() {
       }
 
       if (data.status) {
-        navigate("/dashboard");
+        navigate("/");
 
         window.location.reload();
         setCurrentUser(data.data);
