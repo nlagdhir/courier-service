@@ -3,7 +3,7 @@ import React from "react";
 function Profile() {
   return (
     <div className="py-10 bg-[#F2EDF3]">
-      <div className="md:flex items-center mx-24 md:1/5 border-2 py-6 px-6 bg-white">
+      <div className="md:flex items-center md:mx-24 md:1/5 border-2 py-6 px-2 md:px-6 bg-white">
         <div className="px-14">
           <img
             className="w-60 h-60 rounded-full border-8 border-purple-600"
@@ -32,33 +32,33 @@ function Profile() {
             </button>
           </div>
         </div>
-        <div className="border-l-8 border-purple-400 px-24 md:w-2/5">
-          <div className="flex">
+        <div className="border-l-8 border-purple-400 md:px-24 mt-4 md:w-2/5">
+          <div className="flex pl-2">
             <p className="font-semibold w-28">Availability:</p>
             <p className="px-8">Active</p>
           </div>
-          <div className="flex">
+          <div className="flex pl-2">
             <p className="font-semibold w-28">Age:</p>
             <p className="px-8">70</p>
           </div>
-          <div className="flex">
+          <div className="flex pl-2">
             <p className="font-semibold w-28">Location:</p>
             <p className="px-8">Dhaka</p>
           </div>
-          <div className="flex">
+          <div className="flex pl-2">
             <p className="font-semibold w-28">Designation:</p>
             <p className="px-8">Full Stack Developer</p>
           </div>
         </div>
       </div>
-      <div className="md:flex px-20 py-24">
+      <div className="md:flex md:px-20 py-10 md:py-24">
         <div className="mx-4 md:w-1/5 bg-white p-4">
           <h1 className="text-2xl font-bold text-center py-8">Website</h1>
           <p className="px-8 pt-4 text-blue-600">Website</p>
           <p className="px-8 pt-4 text-blue-600">Blog</p>
           <p className="px-8 pt-4 text-blue-600">Portfolio</p>
         </div>
-        <div className="mx-4 md:w-4/5 bg-white p-4">
+        <div className="mx-4 md:w-4/5 bg-white px-2 py-2 md:p-4">
           <h1 className="text-2xl font-bold text-certer">About</h1>
           <p className="py-8">
             Hundreds of components, scalable assets, nine dashboard designs,
