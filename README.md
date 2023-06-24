@@ -23,6 +23,7 @@ An Admin dashboard for booking, account information and more with login and regi
 
 ![App Screenshot](https://i.ibb.co/nwbpNGt/dashboard1.png)
 
-![App Screenshot](https://i.ibb.co/YB0fwVh/dashboard2.png)
+![Dashboard_form](https://github.com/nlagdhir/courier-service/assets/17096384/5e0b31b9-2345-408f-b07a-d527d299e810)
+d2.png)
 
 ![App Screenshot](https://i.ibb.co/Ctx4yPm/login-feature.png)
